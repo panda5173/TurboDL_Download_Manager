@@ -1,0 +1,5 @@
+Copy the contents of the ChromeExtension folder from the Windows project into this folder
+(C:\Users\pankaj.spur\Videos\TurboDL\ChromeExtension -> manifest.json, background.js, popup files, icons ...).
+
+The extension needs no changes for Linux: it talks to TurboDL on 127.0.0.1:9614 exactly as on Windows.
+This text file is not copied into the build.

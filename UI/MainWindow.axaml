@@ -1,0 +1,184 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="using:TurboDL.Core"
+        xmlns:ui="using:TurboDL.UI"
+        x:Class="TurboDL.UI.MainWindow"
+        Title="TurboDL"
+        Icon="/Assets/turbodl.png"
+        Width="1100" Height="680" MinWidth="860" MinHeight="480"
+        WindowStartupLocation="CenterScreen">
+
+  <Grid ColumnDefinitions="232,*">
+
+    <!-- ================= sidebar ================= -->
+    <Border Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="0,0,1,0">
+      <Grid RowDefinitions="Auto,*,Auto" Margin="12,16,12,12">
+        <StackPanel Orientation="Horizontal" Spacing="12" Margin="6,0,0,18">
+          <Image Source="/Assets/turbodl.png" Width="38" Height="38"/>
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="TurboDL" FontSize="17" FontWeight="Bold"/>
+            <TextBlock Text="Download Manager" Classes="sub" FontSize="11"/>
+          </StackPanel>
+        </StackPanel>
+
+        <ListBox x:Name="NavList" Grid.Row="1" Classes="nav" SelectionMode="Single"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+          <ListBox.ItemTemplate>
+            <DataTemplate x:DataType="ui:NavEntry">
+              <Panel>
+                <TextBlock IsVisible="{Binding IsHeader}" Text="{Binding Title}" Classes="section" Margin="0,14,0,0"/>
+                <Grid IsVisible="{Binding !IsHeader}" ColumnDefinitions="Auto,*,Auto">
+                  <PathIcon Width="16" Height="16" VerticalAlignment="Center"
+                            Foreground="{DynamicResource TextBrush}"
+                            Data="{Binding Icon, Converter={x:Static ui:IconConverter.Instance}}"/>
+                  <TextBlock Grid.Column="1" Margin="12,0,6,0" VerticalAlignment="Center" Text="{Binding Title}"/>
+                  <Border Grid.Column="2" IsVisible="{Binding HasCount}" Background="{DynamicResource ChipBrush}"
+                          CornerRadius="9" Padding="7,1" MinWidth="22" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Count}" FontSize="11" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource SubTextBrush}"/>
+                  </Border>
+                </Grid>
+              </Panel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Border Grid.Row="2" Background="{DynamicResource CardBrush}" CornerRadius="12" Padding="14,12" Margin="0,10,0,0">
+          <StackPanel Spacing="2">
+            <TextBlock Text="TOTAL SPEED" Classes="section"/>
+            <TextBlock x:Name="TotalSpeedText" Text="0 B/s" FontSize="22" FontWeight="Bold"/>
+            <TextBlock x:Name="ActiveText" Text="Idle" FontSize="12" Foreground="{DynamicResource AccentBrush}"/>
+            <TextBlock x:Name="LimitText" Classes="sub"/>
+          </StackPanel>
+        </Border>
+      </Grid>
+    </Border>
+
+    <!-- ================= main area ================= -->
+    <Grid Grid.Column="1" RowDefinitions="Auto,Auto,*,Auto" Margin="20,16,16,10">
+
+      <Grid ColumnDefinitions="*,Auto,Auto">
+        <TextBlock x:Name="ViewTitle" Text="All downloads" Classes="h1" VerticalAlignment="Center"/>
+        <TextBox x:Name="SearchBox" Grid.Column="1" Width="250" Watermark="Search downloads">
+          <TextBox.InnerLeftContent>
+            <PathIcon Data="{StaticResource IcSearch}" Width="14" Height="14" Margin="10,0,0,0"
+                      Foreground="{DynamicResource SubTextBrush}"/>
+          </TextBox.InnerLeftContent>
+        </TextBox>
+        <Button Grid.Column="2" Classes="round" Margin="10,0,0,0" Click="Settings_Click" ToolTip.Tip="Settings">
+          <PathIcon Data="{StaticResource IcSettings}" Width="18" Height="18"/>
+        </Button>
+      </Grid>
+
+      <WrapPanel Grid.Row="1" Margin="0,14,0,12" Orientation="Horizontal">
+        <Button Classes="primary" Click="Add_Click" Margin="0,0,10,4" ToolTip.Tip="Add download (Ctrl+N)">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <PathIcon Data="{StaticResource IcPlus}" Width="14" Height="14"/>
+            <TextBlock Text="Add URL"/>
+          </StackPanel>
+        </Button>
+        <Button x:Name="ResumeBtn" Classes="tool" Click="Resume_Click" Margin="2,0,2,4">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <PathIcon Data="{StaticResource IcPlay}" Width="14" Height="14"/>
+            <TextBlock Text="Resume"/>
+          </StackPanel>
+        </Button>
+        <Button x:Name="PauseBtn" Classes="tool" Click="Pause_Click" Margin="2,0,2,4">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <PathIcon Data="{StaticResource IcPause}" Width="14" Height="14"/>
+            <TextBlock Text="Pause"/>
+          </StackPanel>
+        </Button>
+        <Button Classes="tool" Click="ResumeAll_Click" Margin="2,0,2,4">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <PathIcon Data="{StaticResource IcDownload}" Width="14" Height="14"/>
+            <TextBlock Text="Start all"/>
+          </StackPanel>
+        </Button>
+        <Button Classes="tool" Click="PauseAll_Click" Margin="2,0,2,4">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <PathIcon Data="{StaticResource IcStop}" Width="14" Height="14"/>
+            <TextBlock Text="Stop all"/>
+          </StackPanel>
+        </Button>
+        <Button x:Name="DeleteBtn" Classes="tool" Click="Delete_Click" Margin="2,0,2,4">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <PathIcon Data="{StaticResource IcDelete}" Width="14" Height="14"/>
+            <TextBlock Text="Delete"/>
+          </StackPanel>
+        </Button>
+        <Button Classes="tool" Click="ClearCompleted_Click" Margin="2,0,2,4">
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <PathIcon Data="{StaticResource IcEraser}" Width="14" Height="14"/>
+            <TextBlock Text="Clear completed"/>
+          </StackPanel>
+        </Button>
+      </WrapPanel>
+
+      <Panel Grid.Row="2">
+        <ListBox x:Name="DownloadList" Classes="cards" SelectionMode="Multiple"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+          <ListBox.ItemTemplate>
+            <DataTemplate x:DataType="core:DownloadItem">
+              <Border Classes="card" Padding="14,12">
+                <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                  <Border Width="42" Height="42" CornerRadius="10" VerticalAlignment="Center"
+                          Background="{Binding CategoryBrush}">
+                    <PathIcon Width="20" Height="20" Foreground="White"
+                              Data="{Binding CategoryIcon, Converter={x:Static ui:IconConverter.Instance}}"/>
+                  </Border>
+
+                  <StackPanel Grid.Column="1" Margin="14,0,16,0" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" FontSize="14" TextTrimming="CharacterEllipsis"/>
+                    <ui:SegmentBar Height="6" Margin="0,8,0,7"
+                                   Segments="{Binding SegmentSnapshot}"
+                                   Total="{Binding TotalBytes}"
+                                   Progress="{Binding ProgressPercent}"
+                                   BarBrush="{Binding StatusBrush}"
+                                   TrackBrush="{DynamicResource TrackBrush}"/>
+                    <Grid ColumnDefinitions="Auto,Auto,*">
+                      <TextBlock Text="{Binding SizeText}" Classes="sub"/>
+                      <TextBlock Grid.Column="1" Text="  •  " Classes="sub"/>
+                      <TextBlock Grid.Column="2" Text="{Binding DetailText}" Classes="sub" TextTrimming="CharacterEllipsis"/>
+                    </Grid>
+                  </StackPanel>
+
+                  <StackPanel Grid.Column="2" MinWidth="110" Margin="0,0,12,0" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding StatusText}" Foreground="{Binding StatusBrush}" FontWeight="SemiBold"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding SpeedText}" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Right" Margin="0,2,0,0"/>
+                    <TextBlock Text="{Binding EtaText}" Classes="sub" FontSize="11" HorizontalAlignment="Right"/>
+                  </StackPanel>
+
+                  <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                    <Button Classes="round" Tag="action" ToolTip.Tip="{Binding ActionTip}">
+                      <PathIcon Width="15" Height="15"
+                                Data="{Binding ActionIcon, Converter={x:Static ui:IconConverter.Instance}}"/>
+                    </Button>
+                    <Button Classes="round" Tag="folder" ToolTip.Tip="Show in folder">
+                      <PathIcon Width="15" Height="15" Data="{StaticResource IcFolder}"/>
+                    </Button>
+                  </StackPanel>
+                </Grid>
+              </Border>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel x:Name="EmptyState" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8"
+                    IsHitTestVisible="False">
+          <PathIcon Data="{StaticResource IcDownload}" Width="44" Height="44" HorizontalAlignment="Center"
+                    Foreground="{DynamicResource MutedBrush}"/>
+          <TextBlock Text="No downloads here" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+          <TextBlock Text="Click Add URL, press Ctrl+V, or drop a link on this window." Classes="sub"
+                     HorizontalAlignment="Center"/>
+        </StackPanel>
+      </Panel>
+
+      <Grid Grid.Row="3" ColumnDefinitions="*,Auto" Margin="0,8,0,0">
+        <TextBlock x:Name="FooterText" Classes="sub" TextTrimming="CharacterEllipsis"/>
+        <TextBlock x:Name="BridgeText" Grid.Column="1" Classes="sub" Margin="12,0,0,0"/>
+      </Grid>
+    </Grid>
+  </Grid>
+</Window>

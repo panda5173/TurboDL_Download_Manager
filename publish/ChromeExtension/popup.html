@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="">
+    <div>
+      <h1>TurboDL</h1>
+      <div id="status" class="status checking"><span class="dot"></span><span id="statusText">Checking…</span></div>
+    </div>
+  </header>
+
+  <label class="row switch">
+    <span>Capture browser downloads</span>
+    <input type="checkbox" id="enabled"><i></i>
+  </label>
+  <label class="row switch">
+    <span>Ask before downloading<br><small>Off = start in TurboDL immediately</small></span>
+    <input type="checkbox" id="showDialog"><i></i>
+  </label>
+
+  <details>
+    <summary>Advanced</summary>
+    <label class="field">File types to capture <small>(space separated, * = all)</small>
+      <textarea id="fileTypes" rows="3" spellcheck="false"></textarea>
+    </label>
+    <label class="field">Never capture on these sites <small>(one per line)</small>
+      <textarea id="excludedSites" rows="2" spellcheck="false" placeholder="mail.google.com"></textarea>
+    </label>
+    <div class="grid">
+      <label class="field">Skip files under (KB)
+        <input type="number" id="minSizeKB" min="0">
+      </label>
+      <label class="field">TurboDL port
+        <input type="number" id="port" min="1024" max="65535">
+      </label>
+    </div>
+    <div class="actions">
+      <button id="reset" class="secondary">Defaults</button>
+      <button id="save">Save</button>
+    </div>
+    <div id="saved" class="saved"></div>
+  </details>
+
+  <footer>Tip: right-click any link → <b>Download with TurboDL</b></footer>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

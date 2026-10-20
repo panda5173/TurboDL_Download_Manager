@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TurboDL.UI.AddDownloadWindow"
+        Title="Add downloads"
+        Icon="/Assets/turbodl.png"
+        Width="580" SizeToContent="Height" CanResize="False"
+        WindowStartupLocation="CenterOwner">
+
+  <StackPanel Margin="24,20,24,20" Spacing="0">
+
+    <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,0,0,18">
+      <Border Width="40" Height="40" CornerRadius="10" Background="{DynamicResource AccentGradient}">
+        <PathIcon Data="{StaticResource IcDownload}" Width="20" Height="20" Foreground="White"/>
+      </Border>
+      <StackPanel VerticalAlignment="Center">
+        <TextBlock Text="Add downloads" Classes="h2"/>
+        <TextBlock Text="Paste one or more links – one per line" Classes="sub"/>
+      </StackPanel>
+    </StackPanel>
+
+    <TextBlock Text="Links" Classes="label"/>
+    <TextBox x:Name="UrlsBox" AcceptsReturn="True" TextWrapping="Wrap" Height="96"
+             VerticalContentAlignment="Top" Watermark="https://…"/>
+    <TextBlock x:Name="UrlCountText" Classes="sub" Margin="2,6,0,14"/>
+
+    <TextBlock Text="File name (optional – only for a single link)" Classes="label"/>
+    <TextBox x:Name="FileNameBox" Margin="0,0,0,16"/>
+
+    <TextBlock Text="Save to" Classes="label"/>
+    <RadioButton x:Name="AutoRadio" GroupName="SaveTo" IsChecked="True" Margin="0,0,0,4">
+      <TextBlock x:Name="AutoText" TextTrimming="CharacterEllipsis"/>
+    </RadioButton>
+    <RadioButton x:Name="CustomRadio" GroupName="SaveTo" Content="Choose a folder" Margin="0,0,0,6"/>
+    <Grid ColumnDefinitions="*,Auto" Margin="28,0,0,16">
+      <TextBox x:Name="FolderBox"/>
+      <Button Grid.Column="1" Classes="secondary" Content="Browse…" Margin="8,0,0,0" Click="Browse_Click"/>
+    </Grid>
+
+    <Grid ColumnDefinitions="*,Auto">
+      <TextBlock Text="Connections per file" Classes="label"/>
+      <TextBlock x:Name="ConnText" Grid.Column="1" FontWeight="SemiBold"/>
+    </Grid>
+    <Slider x:Name="ConnSlider" Minimum="1" Maximum="32" TickFrequency="1" IsSnapToTickEnabled="True" Margin="0,0,0,18"/>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+      <Button Classes="secondary" Content="Cancel" IsCancel="True" Click="Cancel_Click"/>
+      <Button x:Name="AddPausedBtn" Classes="secondary" Content="Add paused" Click="AddPaused_Click"/>
+      <Button x:Name="DownloadBtn" Classes="primary" Click="Download_Click">
+        <StackPanel Orientation="Horizontal" Spacing="8">
+          <PathIcon Data="{StaticResource IcDownload}" Width="14" Height="14"/>
+          <TextBlock Text="Download"/>
+        </StackPanel>
+      </Button>
+    </StackPanel>
+  </StackPanel>
+</Window>

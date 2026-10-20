@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- TurboDL for Ubuntu / Linux (x64). C# / .NET 10 / Avalonia UI. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>TurboDL</AssemblyName>
+    <RootNamespace>TurboDL</RootNamespace>
+    <Version>1.4.0</Version>
+    <Product>TurboDL</Product>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <!-- No ICU dependency: fewer things that can be missing on a minimal install. -->
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+    <TieredPGO>true</TieredPGO>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+    <!-- CS0618: some Avalonia 11 clipboard/drag APIs are marked obsolete in newer builds but still work.
+         AVLN3001: windows take constructor arguments (no designer constructor needed). -->
+    <NoWarn>$(NoWarn);CS0618;AVLN3001;CA1416</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.*" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.*" />
+  </ItemGroup>
+
+  <!-- Chrome/Edge extension: kept as loose files next to the TurboDL binary (not bundled into it). -->
+  <ItemGroup>
+    <None Include="ChromeExtension\**" Exclude="ChromeExtension\PUT_EXTENSION_FILES_HERE.txt"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest"
+          ExcludeFromSingleFile="true" />
+  </ItemGroup>
+
+</Project>

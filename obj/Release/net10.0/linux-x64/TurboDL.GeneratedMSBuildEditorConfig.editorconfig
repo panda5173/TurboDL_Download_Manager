@@ -1,0 +1,58 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = 
+build_property.IncludeAllContentForSelfExtract = 
+build_property.VerifyReferenceTrimCompatibility = 
+build_property.VerifyReferenceAotCompatibility = 
+build_property.AvaloniaNameGeneratorIsEnabled = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.AvaloniaNameGeneratorViewFileNamingStrategy = NamespaceAndClassName
+build_property.AvaloniaNameGeneratorAttachDevTools = true
+build_property.AvaloniaUseCompiledBindingsByDefault = true
+build_property.AvaloniaMainPackageVersion = 11.3.22
+build_property.AvaloniaPreviewerNetCoreToolPath = /home/pankaj/.nuget/packages/avalonia/11.3.22/buildTransitive//../tools/netstandard2.0/designer/Avalonia.Designer.HostApp.dll
+build_property.AvaloniaResourcePaths = /home/pankaj/Downloads/TurboDL.Linux/Assets/turbodl-64.png,/home/pankaj/Downloads/TurboDL.Linux/Assets/turbodl.png,/home/pankaj/Downloads/TurboDL.Linux/App.axaml,/home/pankaj/Downloads/TurboDL.Linux/Themes/Icons.axaml,/home/pankaj/Downloads/TurboDL.Linux/Themes/Palette.axaml,/home/pankaj/Downloads/TurboDL.Linux/Themes/Styles.axaml,/home/pankaj/Downloads/TurboDL.Linux/UI/AddDownloadWindow.axaml,/home/pankaj/Downloads/TurboDL.Linux/UI/ConfirmDeleteWindow.axaml,/home/pankaj/Downloads/TurboDL.Linux/UI/MainWindow.axaml,/home/pankaj/Downloads/TurboDL.Linux/UI/SettingsWindow.axaml
+build_property.TargetFramework = net10.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = true
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TurboDL
+build_property.ProjectDir = /home/pankaj/Downloads/TurboDL.Linux/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[/home/pankaj/Downloads/TurboDL.Linux/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pankaj/Downloads/TurboDL.Linux/Themes/Icons.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pankaj/Downloads/TurboDL.Linux/Themes/Palette.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pankaj/Downloads/TurboDL.Linux/Themes/Styles.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pankaj/Downloads/TurboDL.Linux/UI/AddDownloadWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pankaj/Downloads/TurboDL.Linux/UI/ConfirmDeleteWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pankaj/Downloads/TurboDL.Linux/UI/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pankaj/Downloads/TurboDL.Linux/UI/SettingsWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

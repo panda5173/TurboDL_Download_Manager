@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Same colours as the Windows build. Switched live by ThemeManager (Dark / Light / Same as system). -->
+  <ResourceDictionary.ThemeDictionaries>
+
+    <ResourceDictionary x:Key="Dark">
+      <SolidColorBrush x:Key="BgBrush" Color="#0F1115"/>
+      <SolidColorBrush x:Key="SidebarBrush" Color="#12151C"/>
+      <SolidColorBrush x:Key="CardBrush" Color="#1A1F2A"/>
+      <SolidColorBrush x:Key="CardHoverBrush" Color="#1F2533"/>
+      <SolidColorBrush x:Key="CardSelectedBrush" Color="#1D2638"/>
+      <SolidColorBrush x:Key="LineBrush" Color="#2A3142"/>
+      <SolidColorBrush x:Key="TextBrush" Color="#E8EBF2"/>
+      <SolidColorBrush x:Key="SubTextBrush" Color="#8C95AA"/>
+      <SolidColorBrush x:Key="MutedBrush" Color="#5B6478"/>
+      <SolidColorBrush x:Key="HoverBrush" Color="#222838"/>
+      <SolidColorBrush x:Key="NavSelectedBrush" Color="#232B3D"/>
+      <SolidColorBrush x:Key="ChipBrush" Color="#262D3D"/>
+      <SolidColorBrush x:Key="TrackBrush" Color="#2A3142"/>
+      <SolidColorBrush x:Key="InputBrush" Color="#161A23"/>
+      <SolidColorBrush x:Key="AccentBrush" Color="#4F8CFF"/>
+
+      <!-- Fluent control overrides -->
+      <SolidColorBrush x:Key="TextControlBackground" Color="#161A23"/>
+      <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#1A1F2A"/>
+      <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#161A23"/>
+      <SolidColorBrush x:Key="TextControlBorderBrush" Color="#2A3142"/>
+      <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#3A4358"/>
+      <SolidColorBrush x:Key="TextControlForeground" Color="#E8EBF2"/>
+      <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#E8EBF2"/>
+      <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#E8EBF2"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#5B6478"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundPointerOver" Color="#5B6478"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundFocused" Color="#5B6478"/>
+    </ResourceDictionary>
+
+    <ResourceDictionary x:Key="Light">
+      <SolidColorBrush x:Key="BgBrush" Color="#F4F6FA"/>
+      <SolidColorBrush x:Key="SidebarBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="CardBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="CardHoverBrush" Color="#F9FAFD"/>
+      <SolidColorBrush x:Key="CardSelectedBrush" Color="#EEF3FE"/>
+      <SolidColorBrush x:Key="LineBrush" Color="#DDE3EC"/>
+      <SolidColorBrush x:Key="TextBrush" Color="#1B2130"/>
+      <SolidColorBrush x:Key="SubTextBrush" Color="#5E6779"/>
+      <SolidColorBrush x:Key="MutedBrush" Color="#9AA3B5"/>
+      <SolidColorBrush x:Key="HoverBrush" Color="#EDF1F7"/>
+      <SolidColorBrush x:Key="NavSelectedBrush" Color="#E8EEFA"/>
+      <SolidColorBrush x:Key="ChipBrush" Color="#EEF1F6"/>
+      <SolidColorBrush x:Key="TrackBrush" Color="#E3E8F0"/>
+      <SolidColorBrush x:Key="InputBrush" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="AccentBrush" Color="#3B6FE0"/>
+
+      <SolidColorBrush x:Key="TextControlBackground" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#FFFFFF"/>
+      <SolidColorBrush x:Key="TextControlBorderBrush" Color="#DDE3EC"/>
+      <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#C5CEDC"/>
+      <SolidColorBrush x:Key="TextControlForeground" Color="#1B2130"/>
+      <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#1B2130"/>
+      <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#1B2130"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#9AA3B5"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundPointerOver" Color="#9AA3B5"/>
+      <SolidColorBrush x:Key="TextControlPlaceholderForegroundFocused" Color="#9AA3B5"/>
+    </ResourceDictionary>
+
+  </ResourceDictionary.ThemeDictionaries>
+
+  <LinearGradientBrush x:Key="AccentGradient" StartPoint="0%,0%" EndPoint="100%,100%">
+    <GradientStop Color="#4F8CFF" Offset="0"/>
+    <GradientStop Color="#7B61FF" Offset="1"/>
+  </LinearGradientBrush>
+  <LinearGradientBrush x:Key="AccentGradientHover" StartPoint="0%,0%" EndPoint="100%,100%">
+    <GradientStop Color="#6A9DFF" Offset="0"/>
+    <GradientStop Color="#8E78FF" Offset="1"/>
+  </LinearGradientBrush>
+
+</ResourceDictionary>

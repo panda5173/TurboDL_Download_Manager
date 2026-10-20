@@ -1,0 +1,150 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TurboDL.UI.SettingsWindow"
+        Title="Settings"
+        Icon="/Assets/turbodl.png"
+        Width="620" Height="720" MinWidth="520" MinHeight="420"
+        WindowStartupLocation="CenterOwner">
+
+  <Grid RowDefinitions="*,Auto">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Margin="24,20,24,12" Spacing="10">
+        <TextBlock Text="Settings" Classes="h1" Margin="0,0,0,6"/>
+
+        <!-- ===== Appearance ===== -->
+        <TextBlock Text="APPEARANCE" Classes="section"/>
+        <Border Classes="panel">
+          <StackPanel Orientation="Horizontal" Spacing="18">
+            <RadioButton x:Name="ThemeSystem" GroupName="Theme" Content="Same as system"/>
+            <RadioButton x:Name="ThemeDark" GroupName="Theme" Content="Dark"/>
+            <RadioButton x:Name="ThemeLight" GroupName="Theme" Content="Light"/>
+          </StackPanel>
+        </Border>
+
+        <!-- ===== Saving ===== -->
+        <TextBlock Text="SAVING" Classes="section" Margin="0,8,0,0"/>
+        <Border Classes="panel">
+          <StackPanel Spacing="12">
+            <StackPanel>
+              <TextBlock Text="Default download folder" Classes="label"/>
+              <Grid ColumnDefinitions="*,Auto">
+                <TextBox x:Name="FolderBox"/>
+                <Button Grid.Column="1" Classes="secondary" Content="Browse…" Margin="8,0,0,0" Click="Browse_Click"/>
+              </Grid>
+            </StackPanel>
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock VerticalAlignment="Center" TextWrapping="Wrap"
+                         Text="Sort into sub-folders by file type (Video, Music, Programs…)"/>
+              <ToggleSwitch x:Name="CategoryBox" Grid.Column="1" Margin="12,0,0,0"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <!-- ===== Speed ===== -->
+        <TextBlock Text="SPEED" Classes="section" Margin="0,8,0,0"/>
+        <Border Classes="panel">
+          <StackPanel Spacing="6">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Text="Connections per download (segments)"/>
+              <TextBlock x:Name="ConnText" Grid.Column="1" FontWeight="SemiBold"/>
+            </Grid>
+            <Slider x:Name="ConnSlider" Minimum="1" Maximum="32" TickFrequency="1" IsSnapToTickEnabled="True"/>
+            <TextBlock Text="8 is a good default. Some servers limit connections – TurboDL adapts automatically."
+                       Classes="sub" TextWrapping="Wrap" Margin="0,0,0,8"/>
+
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock Text="Downloads running at the same time"/>
+              <TextBlock x:Name="ParText" Grid.Column="1" FontWeight="SemiBold"/>
+            </Grid>
+            <Slider x:Name="ParSlider" Minimum="1" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True" Margin="0,0,0,8"/>
+
+            <Grid ColumnDefinitions="*,12,*,12,*">
+              <StackPanel>
+                <TextBlock Text="Speed limit (KB/s, 0 = off)" Classes="label"/>
+                <TextBox x:Name="LimitBox"/>
+              </StackPanel>
+              <StackPanel Grid.Column="2">
+                <TextBlock Text="Retries per connection" Classes="label"/>
+                <TextBox x:Name="RetryBox"/>
+              </StackPanel>
+              <StackPanel Grid.Column="4">
+                <TextBlock Text="Timeout (seconds)" Classes="label"/>
+                <TextBox x:Name="TimeoutBox"/>
+              </StackPanel>
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <!-- ===== Behaviour ===== -->
+        <TextBlock Text="BEHAVIOUR" Classes="section" Margin="0,8,0,0"/>
+        <Border Classes="panel">
+          <StackPanel Spacing="12">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock VerticalAlignment="Center" TextWrapping="Wrap"
+                         Text="Keep running in the top-bar tray when the window is closed"/>
+              <ToggleSwitch x:Name="TrayBox" Grid.Column="1" Margin="12,0,0,0"/>
+            </Grid>
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock VerticalAlignment="Center" TextWrapping="Wrap"
+                         Text="Show a notification when a download finishes or fails"/>
+              <ToggleSwitch x:Name="NotifyBox" Grid.Column="1" Margin="12,0,0,0"/>
+            </Grid>
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock VerticalAlignment="Center" TextWrapping="Wrap"
+                         Text="Resume unfinished downloads when TurboDL starts"/>
+              <ToggleSwitch x:Name="ResumeBox" Grid.Column="1" Margin="12,0,0,0"/>
+            </Grid>
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock VerticalAlignment="Center" TextWrapping="Wrap"
+                         Text="Start at login (minimised to tray)"/>
+              <ToggleSwitch x:Name="StartupBox" Grid.Column="1" Margin="12,0,0,0"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <!-- ===== Browser integration ===== -->
+        <TextBlock Text="BROWSER INTEGRATION" Classes="section" Margin="0,8,0,0"/>
+        <Border Classes="panel">
+          <StackPanel Spacing="10">
+            <TextBlock x:Name="BridgeText" FontWeight="SemiBold"/>
+            <TextBlock Classes="sub" TextWrapping="Wrap"
+                       Text="Install the TurboDL extension once. It captures downloads in Chrome, Chromium or Edge and adds 'Download with TurboDL' to the right-click menu."/>
+            <WrapPanel>
+              <Button Classes="primary" Click="SetupChrome_Click" Margin="0,0,8,6">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <PathIcon Data="{StaticResource IcGlobe}" Width="14" Height="14"/>
+                  <TextBlock Text="Set up Chrome"/>
+                </StackPanel>
+              </Button>
+              <Button Classes="secondary" Click="SetupChromium_Click" Margin="0,0,8,6">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <PathIcon Data="{StaticResource IcGlobe}" Width="14" Height="14"/>
+                  <TextBlock Text="Set up Chromium"/>
+                </StackPanel>
+              </Button>
+              <Button Classes="secondary" Click="SetupEdge_Click" Margin="0,0,8,6">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <PathIcon Data="{StaticResource IcGlobe}" Width="14" Height="14"/>
+                  <TextBlock Text="Set up Edge"/>
+                </StackPanel>
+              </Button>
+            </WrapPanel>
+            <Grid ColumnDefinitions="Auto,Auto,*">
+              <TextBlock Text="Port" VerticalAlignment="Center" Margin="0,0,12,0"/>
+              <TextBox x:Name="PortBox" Grid.Column="1" Width="90"/>
+              <TextBlock Grid.Column="2" Classes="sub" VerticalAlignment="Center" Margin="12,0,0,0" TextWrapping="Wrap"
+                         Text="Restart TurboDL after changing; set the same port in the extension."/>
+            </Grid>
+          </StackPanel>
+        </Border>
+      </StackPanel>
+    </ScrollViewer>
+
+    <Border Grid.Row="1" BorderBrush="{DynamicResource LineBrush}" BorderThickness="0,1,0,0" Padding="24,12">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+        <Button Classes="secondary" Content="Cancel" IsCancel="True" Click="Cancel_Click"/>
+        <Button Classes="primary" Content="Save" MinWidth="90" HorizontalContentAlignment="Center" Click="Save_Click"/>
+      </StackPanel>
+    </Border>
+  </Grid>
+</Window>

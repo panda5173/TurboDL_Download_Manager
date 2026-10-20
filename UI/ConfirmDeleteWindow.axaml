@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TurboDL.UI.ConfirmDeleteWindow"
+        Title="Delete"
+        Icon="/Assets/turbodl.png"
+        Width="460" SizeToContent="Height" CanResize="False"
+        WindowStartupLocation="CenterOwner">
+  <StackPanel Margin="24,22" Spacing="14">
+    <TextBlock x:Name="TitleText" Classes="h2" TextWrapping="Wrap"/>
+    <TextBlock Text="Unfinished downloads also lose their partial data." Classes="sub" TextWrapping="Wrap"/>
+    <CheckBox x:Name="DeleteFilesBox" Content="Also delete the downloaded files from disk"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,6,0,0">
+      <Button Classes="secondary" Content="Cancel" IsCancel="True" Click="Cancel_Click"/>
+      <Button Classes="primary" Content="Remove" IsDefault="True" Click="Ok_Click"/>
+    </StackPanel>
+  </StackPanel>
+</Window>
