@@ -1,8 +1,7 @@
 # TurboDL for Ubuntu 26.04 LTS (Linux x64)
 
 Port of TurboDL 1.4 (Windows, WPF) to Linux. C# / .NET 10 / **Avalonia UI** (cross-platform successor to WPF).
-The download engine, queue, resume logic (including the v1.1.1 pause/resume fix), rate limiter and browser bridge
-are the same code as the Windows build – only the Windows-specific parts were replaced.
+The download engine, queue, resume logic (including the v1.1.1 pause/resume fix), rate limiter and browser bridge.
 
 ## Build and install
 
