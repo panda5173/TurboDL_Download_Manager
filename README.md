@@ -58,5 +58,8 @@ For Ubuntu's snap Chromium the extension is placed in `~/snap/chromium/common/Tu
 GET /ping · POST /add (header X-TurboDL-Client) `{"url","urls","fileName","referrer","cookies","userAgent","silent"}` · POST /show.
 Requests from web pages (http/https Origin) are rejected.
 
-## Not included (same as Windows, by design)
-FTP, video stream grabber (blob/HLS), site grabber, scheduler.
+<img width="1107" height="721" alt="image" src="https://github.com/user-attachments/assets/3a935899-0fca-4276-99b7-5d9955d13dcd" />
+
+<img width="621" height="735" alt="image" src="https://github.com/user-attachments/assets/4429cdc3-890d-42fd-9cf4-23b6bc0d4dc1" />
+
+
